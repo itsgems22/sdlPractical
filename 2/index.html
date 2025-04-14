@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Railway Time Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #004080;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    @media screen and (max-width: 768px) {
+      table {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Railway Time Table</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Train Name</th>
+        <th>Train No.</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Arrival</th>
+        <th>Days of Operation</th>
+      </tr>
+      <tr>
+        <td>Vande Bharat</td>
+        <td>45875</td>
+        <td>Chennai</td>
+        <td>Pune</td>
+        <td>15:55</td>
+        <td>23:10</td>
+        <td>2</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr

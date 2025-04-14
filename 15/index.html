@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup & Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .container {
+      background: white;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="signupBox">
+  <h2>Sign Up</h2>
+  <input type="text" id="signupUsername" placeholder="Enter your name" required>
+  <input type="text" id="signupEmail" placeholder="Email" required>
+  <input type="password" id="signupPassword" placeholder="Password" required>
+  <button onclick="handleSignup()">Sign Up</button>
+</div>
+
+<div class="container hidden" id="loginBox">
+  <h2>Login</h2>
+  <input type="text" id="loginEmail" placeholder="Email" required>
+  <input type="password" id="loginPassword" placeholder="Password" required>
+  <button onclick="handleLogin()">Login</button>
+</div>
+
+<div id="output"></div>
+
+<script>
+  let storedUser = {};
+
+  function handleSignup() {
+    const name = document.getElementById("signupUsername").value.trim();
+    const email = document.getElementById("signupEmail").value.trim();
+    const password = document.getElementById("signupPassword").value;
+
+    if (name === "" || email === "" || password.length < 6) {
+      alert("Please fill all fields correctly. Password must be at least 6 characters.");
+      return;
+    }
+
+    storedUser = { name, email, password };
+
+    document.getElementById("signupBox").classList.add("hidden");
+    document.getElementById("loginBox").classList.remove("hidden");
+
+    alert("Signup successful! Please login now.");
+  }
+
+  function handleLogin() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    if (email === storedUser.email && password === storedUser.password) {
+      document.getElementById("output").innerText = `Welcome, ${storedUser.name}! 🎉`;
+      document.getElementById("loginBox").classList.add("hidden");
+    } else {
+      alert("Invalid email or password.");
+    }
+  }
+</script>
+
+</body>
+</html>
