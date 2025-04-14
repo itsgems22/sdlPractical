@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="students.xsd">
+  
+  <student>
+    <name>John Doe</name>
+    <roll>101</roll>
+    <department>Computer Engineering</department>
+    <email>john@example.com</email>
+    <subjects>
+      <subject>Operating Systems</subject>
+      <subject>Data Structures</subject>
+      <subject>DBMS</subject>
+    </subjects>
+  </student>
+
+  <student>
+    <name>Jane Smith</name>
+    <roll>102</roll>
+    <department>IT</department>
+    <email>jane@example.com</email>
+    <subjects>
+      <subject>Networking</subject>
+      <subject>Cybersecurity</subject>
+    </subjects>
+  </student>

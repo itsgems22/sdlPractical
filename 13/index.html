@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Event Handlers</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .box {
+      padding: 20px;
+      background-color: lightblue;
+      width: 200px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Event Handler Examples</h2>
+
+  <!-- 1. Click Event -->
+  <button onclick="showAlert()">Click Me</button>
+
+  <!-- 2. Mouseover Event -->
+  <div class="box" onmouseover="changeColor(this)" onmouseout="resetColor(this)">
+    Hover over me
+  </div>
+
+  <!-- 3. Input Change -->
+  <label>Choose a course:</label>
+  <select onchange="courseSelected(this)">
+    <option value="">--Select--</option>
+    <option value="BTech">BTech</option>
+    <option value="MTech">MTech</option>
+    <option value="MBA">MBA</option>
+  </select>
+
+  <!-- 4. Keyup Event -->
+  <div style="margin-top: 20px;">
+    <label>Type your name:</label>
+    <input type="text" onkeyup="updateName(this)" placeholder="Enter name">
+    <p id="output"></p>
+  </div>
+
+  <script>
+    // 1. Click handler
+    function showAlert() {
+      alert("Button clicked!");
+    }
+
+    // 2. Mouseover + Mouseout handlers
+    function changeColor(element) {
+      element.style.backgroundColor = "orange";
+    }
+
+    function resetColor(element) {
+      element.style.backgroundColor = "lightblue";
+    }
+
+    // 3. Select onchange handler
+    function courseSelected(select) {
+      alert("You selected: " + select.value);
+    }
+
+    // 4. Keyup handler for live preview
+    function updateName(input) {
+      document.getElementById("output").innerText = "Hello, " + input.value;
+    }
+  </script>
+
+</body>
+</html>

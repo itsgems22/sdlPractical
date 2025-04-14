@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form with Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .checkbox-group label {
+      font-weight: normal;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .result {
+      margin-top: 30px;
+      background: #e9f7ef;
+      padding: 20px;
+      border-left: 6px solid #28a745;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registration Form</h2>
+  <form id="regForm" onsubmit="return handleSubmit()">
+    <label>First Name:</label>
+    <input type="text" id="fname" required>
+
+    <label>Last Name:</label>
+    <input type="text" id="lname" required>
+
+    <label>Organization:</label>
+    <input type="text" id="organization" required>
+
+    <label>Gender:</label>
+    <select id="gender" required>
+      <option value="">--Select--</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+
+    <label>Hobbies:</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+      <label><input type="checkbox" name="hobbies" value="Traveling"> Traveling</label>
+      <label><input type="checkbox" name="hobbies" value="Gaming"> Gaming</label>
+      <label><input type="checkbox" name="hobbies" value="Sports"> Sports</label>
+    </div>
+
+    <label>About You:</label>
+    <textarea id="about" rows="4" placeholder="Tell something about yourself..."></textarea>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <div class="result" id="output" style="display: none;"></div>
+</div>
+
+<script>
+  function handleSubmit() {
+    const fname = document.getElementById("fname").value.trim();
+    const lname = document.getElementById("lname").value.trim();
+    const org = document.getElementById("organization").value.trim();
+    const gender = document.getElementById("gender").value;
+    const about = document.getElementById("about").value.trim();
+
+    const hobbies = [];
+    document.querySelectorAll("input[name='hobbies']:checked").forEach(hobby => {
+      hobbies.push(hobby.value);
+    });
+
+    // Basic validation
+    if (!fname || !lname || !org || !gender) {
+      alert("Please fill all required fields.");
+      return false;
+    }
+
+    const output = document.getElementById("output");
+    output.style.display = "block";
+    output.innerHTML = `
+      <h3>Registration Details</h3>
+      <p><strong>First Name:</strong> ${fname}</p>
+      <p><strong>Last Name:</strong> ${lname}</p>
+      <p><strong>Organization:</strong> ${org}</p>
+      <p><strong>Gender:</strong> ${gender}</p>
+      <p><strong>Hobbies:</strong> ${hobbies.length > 0 ? hobbies.join(', ') : 'None'}</p>
+      <p><strong>About You:</strong> ${about || 'N/A'}</p>
+    `;
+
+    return false; // prevent page reload
+  }
+</script>
+
+</body>
+</html>
